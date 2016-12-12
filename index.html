@@ -7,7 +7,7 @@
 		<title>Git Flow Explained</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/solarized.css">
+		<link rel="stylesheet" href="css/theme/sky.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -79,11 +79,14 @@ Switched to a new branch "myfeature"</code></pre>
 						<h3>Finishing a Feature</h3>
 						<pre><code>$ git checkout develop
 Switched to branch 'develop'
+
 $ git merge --no-ff myfeature
 Updating ea1b82a..05e9557
 (Summary of changes)
+
 $ git branch -d myfeature
 Deleted branch myfeature (was 05e9557).
+
 $ git push origin develop</code></pre>
 					</section>
 					<section>
@@ -100,8 +103,10 @@ $ git push origin develop</code></pre>
 						<h3>Creating a Release</h3>
 						<pre><code>$ git checkout -b release-1.2 develop
 Switched to a new branch "release-1.2"
+
 $ ./bump-version.sh 1.2
 Files modified successfully, version bumped to 1.2.
+
 $ git commit -a -m "Bumped version number to 1.2"
 [release-1.2 74d9424] Bumped version number to 1.2
 1 files changed, 1 insertions(+), 1 deletions(-)</code></pre>
@@ -110,9 +115,11 @@ $ git commit -a -m "Bumped version number to 1.2"
 						<h3>Finishing a Release</h3>
 						<pre><code>$ git checkout master
 Switched to branch 'master'
+
 $ git merge --no-ff release-1.2
 Merge made by recursive.
 (Summary of changes)
+
 $ git tag -a 1.2</code></pre>
 					</section>
 				</section>
@@ -128,8 +135,10 @@ $ git tag -a 1.2</code></pre>
 						<h3>Creating a Hotfix</h3>
 						<pre><code>$ git checkout -b hotfix-1.2.1 master
 Switched to a new branch "hotfix-1.2.1"
+
 $ ./bump-version.sh 1.2.1
 Files modified successfully, version bumped to 1.2.1.
+
 $ git commit -a -m "Bumped version number to 1.2.1"
 [hotfix-1.2.1 41e61bb] Bumped version number to 1.2.1
 1 files changed, 1 insertions(+), 1 deletions(-)</code></pre>
@@ -144,15 +153,20 @@ $ git commit -a -m "Bumped version number to 1.2.1"
 						<h3>Finishing a Hotfix</h3>
 						<pre><code>$ git checkout master
 Switched to branch 'master'
+
 $ git merge --no-ff hotfix-1.2.1
 Merge made by recursive.
 (Summary of changes)
+
 $ git tag -a 1.2.1
+
 $ git checkout develop
 Switched to branch 'develop'
+
 $ git merge --no-ff hotfix-1.2.1
 Merge made by recursive.
 (Summary of changes)
+
 $ git branch -d hotfix-1.2.1
 Deleted branch hotfix-1.2.1 (was abbe5d6).</code></pre>
 					</section>
