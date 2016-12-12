@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Git Flow Explained</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/solarized.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,8 +24,73 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>GitFlow Explained</h1>
+					<p>By Simon Baynes</p>
+				</section>
+				<section>
+					<h2>Branching Model</h2>
+					<img data-src="img/git-flow.png" style="height:80vh;" />
+				</section>
+				<section>
+					<h2>Concepts</h2>
+					<section>
+						<dl>
+							<dt><em>master</em></dt>
+							<dd>Represents what is in production</dd>
+						</dl>
+					</section>
+					<section>
+						<dl>
+							<dt><em>develop</em></dt>
+							<dd>Long running branch that contains latest tested work ready for the next release</dd>
+						</dl>
+					</section>
+					<section>
+						<dl>
+							<dt><em>feature</em></dt>
+							<dd>This is where work is done. These are dicreet branches for doing an atomic feature</dd>
+						</dl>
+					</section>
+					<section>
+						<dl>
+							<dt><em>release</em></dt>
+							<dd>This how you release all completed features in 'develop' that are not yet in production</dd>
+						</dl>
+					</section>
+					<section>
+						<dl>
+							<dt><em>hotfix</em></dt>
+							<dd>This how you release an emergency fix to production</dd>
+						</dl>
+					</section>
+				</section>
+				<section>
+					<h2>Working with Features</h2>
+					<section>
+						<img data-src="img/feature.png" style="height:60vh;" />
+					</section>
+					<section>
+						<h3>Creating Features</h3>
+						<pre><code>$ git checkout -b myfeature develop
+Switched to a new branch "myfeature"</code></pre>
+					</section>
+					<section>
+						<h3>Closing Features</h3>
+						<pre><code>$ git checkout develop
+Switched to branch 'develop'
+$ git merge --no-ff myfeature
+Updating ea1b82a..05e9557
+(Summary of changes)
+$ git branch -d myfeature
+Deleted branch myfeature (was 05e9557).
+$ git push origin develop</code></pre>
+					</section>
+					<section>
+						<h3>No Fastforward Merge</h3>
+						<img data-src="img/no-ff-merge.png" style="height:50vh;" />
+					</section>
+				</section>
 			</div>
 		</div>
 
