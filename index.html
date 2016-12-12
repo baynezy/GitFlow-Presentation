@@ -76,7 +76,7 @@
 Switched to a new branch "myfeature"</code></pre>
 					</section>
 					<section>
-						<h3>Closing Features</h3>
+						<h3>Finishing a Feature</h3>
 						<pre><code>$ git checkout develop
 Switched to branch 'develop'
 $ git merge --no-ff myfeature
@@ -89,6 +89,31 @@ $ git push origin develop</code></pre>
 					<section>
 						<h3>No Fastforward Merge</h3>
 						<img data-src="img/no-ff-merge.png" style="height:50vh;" />
+					</section>
+				</section>
+				<section>
+					<h2>Working with Releases</h2>
+					<section>
+						<p>Releases are there to start the preparation for going live.</p>
+					</section>
+					<section>
+						<h3>Creating a Release</h3>
+						<pre><code>$ git checkout -b release-1.2 develop
+Switched to a new branch "release-1.2"
+$ ./bump-version.sh 1.2
+Files modified successfully, version bumped to 1.2.
+$ git commit -a -m "Bumped version number to 1.2"
+[release-1.2 74d9424] Bumped version number to 1.2
+1 files changed, 1 insertions(+), 1 deletions(-)</code></pre>
+					</section>
+					<section>
+						<h3>Finishing a Release</h3>
+						<pre><code>$ git checkout master
+Switched to branch 'master'
+$ git merge --no-ff release-1.2
+Merge made by recursive.
+(Summary of changes)
+$ git tag -a 1.2</code></pre>
 					</section>
 				</section>
 			</div>
