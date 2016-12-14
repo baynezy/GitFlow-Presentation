@@ -80,7 +80,7 @@ Switched to a new branch "myfeature"</code></pre>
 						<pre><code>$ git checkout develop
 Switched to branch 'develop'
 
-$ git merge --no-ff myfeature
+$ git merge myfeature --no-ff
 Updating ea1b82a..05e9557
 (Summary of changes)
 
@@ -116,11 +116,22 @@ $ git commit -a -m "Bumped version number to 1.2"
 						<pre><code>$ git checkout master
 Switched to branch 'master'
 
-$ git merge --no-ff release-1.2
+$ git merge release-1.2 --no-ff
 Merge made by recursive.
 (Summary of changes)
 
-$ git tag -a 1.2</code></pre>
+$ git tag -a 1.2
+
+$ git checkout develop
+Switched to branch 'develop'
+
+$git merge release-1.2 --no-ff
+Merge made by recursive.
+(Summary of changes)
+
+$ git branch -d release-1.2
+Deleted branch myfeature (was 05e9557).
+</code></pre>
 					</section>
 				</section>
 				<section>
@@ -154,7 +165,7 @@ $ git commit -a -m "Bumped version number to 1.2.1"
 						<pre><code>$ git checkout master
 Switched to branch 'master'
 
-$ git merge --no-ff hotfix-1.2.1
+$ git merge hotfix-1.2.1 --no-ff
 Merge made by recursive.
 (Summary of changes)
 
@@ -163,7 +174,7 @@ $ git tag -a 1.2.1
 $ git checkout develop
 Switched to branch 'develop'
 
-$ git merge --no-ff hotfix-1.2.1
+$ git merge hotfix-1.2.1 --no-ff
 Merge made by recursive.
 (Summary of changes)
 
@@ -185,6 +196,8 @@ Deleted branch hotfix-1.2.1 (was abbe5d6).</code></pre>
 						<dd>Vincent Driessen's original post on the subject.</dd>
 						<dt><a href="https://github.com/nvie/gitflow">GitFlow Command Line Tools</a></dt>
 						<dd>Command line tools that simplify some of the tasks outlined in this presentation.</dd>
+						<dt><a href="http://learngitbranching.js.org/">Learn Git Branching</a></dt>
+						<dd>You can practice here.</dd>
 					</dl>
 				</section>
 			</div>
