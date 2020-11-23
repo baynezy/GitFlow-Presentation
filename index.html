@@ -1,83 +1,85 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Git Flow Explained</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/sky.css">
+    <title>Git Flow Explained</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/sky.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h1>GitFlow Explained</h1>
-					<p>By Simon Baynes</p>
-				</section>
-				<section>
-					<h2>Branching Model</h2>
-					<img data-src="img/git-flow.png" style="height:80vh;" />
-				</section>
-				<section>
-					<h2>Concepts</h2>
-					<section>
-						<dl>
-							<dt><em>master</em></dt>
-							<dd>Represents what is in production</dd>
-						</dl>
-					</section>
-					<section>
-						<dl>
-							<dt><em>develop</em></dt>
-							<dd>Long running branch that contains latest tested work ready for the next release</dd>
-						</dl>
-					</section>
-					<section>
-						<dl>
-							<dt><em>feature</em></dt>
-							<dd>This is where work is done. These are discrete branches for doing an atomic feature</dd>
-						</dl>
-					</section>
-					<section>
-						<dl>
-							<dt><em>release</em></dt>
-							<dd>This how you release all completed features in 'develop' that are not yet in production</dd>
-						</dl>
-					</section>
-					<section>
-						<dl>
-							<dt><em>hotfix</em></dt>
-							<dd>This how you release an emergency fix to production</dd>
-						</dl>
-					</section>
-				</section>
-				<section>
-					<h2>Working with Features</h2>
-					<section>
-						<img data-src="img/feature.png" style="height:60vh;margin-top:10vh;" />
-					</section>
-					<section>
-						<h3>Creating Features</h3>
-						<pre><code>$ git checkout -b myfeature develop
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>GitFlow Explained</h1>
+                <p>By Simon Baynes</p>
+            </section>
+            <section>
+                <h2>Branching Model</h2>
+                <img data-src="img/git-flow.png" style="height:80vh;" />
+            </section>
+            <section>
+                <h2>Concepts</h2>
+                <section>
+                    <dl>
+                        <dt><em>master</em></dt>
+                        <dd>Represents what is in production</dd>
+                    </dl>
+                </section>
+                <section>
+                    <dl>
+                        <dt><em>develop</em></dt>
+                        <dd>Long running branch that contains latest tested work ready for the next release</dd>
+                    </dl>
+                </section>
+                <section>
+                    <dl>
+                        <dt><em>feature</em></dt>
+                        <dd>This is where work is done. These are discrete branches for doing an atomic feature</dd>
+                    </dl>
+                </section>
+                <section>
+                    <dl>
+                        <dt><em>release</em></dt>
+                        <dd>This is how you release all new completed features in 'develop' that are now ready for production</dd>
+                    </dl>
+                </section>
+                <section>
+                    <dl>
+                        <dt><em>hotfix</em></dt>
+                        <dd>This how you release an emergency fix to production</dd>
+                    </dl>
+                </section>
+            </section>
+            <section>
+                <h2>Working with Features</h2>
+                <section>
+                    <img data-src="img/feature.png" style="height:60vh;margin-top:10vh;" />
+                </section>
+                <section>
+                    <h3>Creating Features</h3>
+                    <pre><code>$ git checkout -b myfeature develop
 Switched to a new branch "myfeature"</code></pre>
-					</section>
-					<section>
-						<h3>Finishing a Feature</h3>
-						<pre><code>$ git checkout develop
+                </section>
+                <section>
+                    <h3>Finishing a Feature</h3>
+                    <pre><code>$ git checkout develop
 Switched to branch 'develop'
 
 $ git merge myfeature --no-ff
@@ -88,20 +90,20 @@ $ git branch -d myfeature
 Deleted branch myfeature (was 05e9557).
 
 $ git push origin develop</code></pre>
-					</section>
-					<section>
-						<h3>No Fastforward Merge</h3>
-						<img data-src="img/no-ff-merge.png" style="height:50vh;" />
-					</section>
-				</section>
-				<section>
-					<h2>Working with Releases</h2>
-					<section>
-						<p>Releases are there to start the preparation for going live.</p>
-					</section>
-					<section>
-						<h3>Creating a Release</h3>
-						<pre><code>$ git checkout -b release-1.2 develop
+                </section>
+                <section>
+                    <h3>No Fastforward Merge</h3>
+                    <img data-src="img/no-ff-merge.png" style="height:50vh;" />
+                </section>
+            </section>
+            <section>
+                <h2>Working with Releases</h2>
+                <section>
+                    <p>Releases are there to start the preparation for going live.</p>
+                </section>
+                <section>
+                    <h3>Creating a Release</h3>
+                    <pre><code>$ git checkout -b release-1.2 develop
 Switched to a new branch "release-1.2"
 
 $ ./bump-version.sh 1.2
@@ -110,10 +112,10 @@ Files modified successfully, version bumped to 1.2.
 $ git commit -a -m "Bumped version number to 1.2"
 [release-1.2 74d9424] Bumped version number to 1.2
 1 files changed, 1 insertions(+), 1 deletions(-)</code></pre>
-					</section>
-					<section>
-						<h3>Finishing a Release</h3>
-						<pre><code>$ git checkout master
+                </section>
+                <section>
+                    <h3>Finishing a Release</h3>
+                    <pre><code>$ git checkout master
 Switched to branch 'master'
 
 $ git merge release-1.2 --no-ff
@@ -132,19 +134,19 @@ Merge made by recursive.
 $ git branch -d release-1.2
 Deleted branch myfeature (was 05e9557).
 </code></pre>
-					</section>
-				</section>
-				<section>
-					<h2>What if you need to fix something in production?</h2>
-				</section>
-				<section>
-					<h2>Working with Hotfixes</h2>
-					<section>
-						<img data-src="img/hotfix.png" style="height:60vh;margin-top:10vh;" />
-					</section>
-					<section>
-						<h3>Creating a Hotfix</h3>
-						<pre><code>$ git checkout -b hotfix-1.2.1 master
+                </section>
+            </section>
+            <section>
+                <h2>What if you need to fix something in production?</h2>
+            </section>
+            <section>
+                <h2>Working with Hotfixes</h2>
+                <section>
+                    <img data-src="img/hotfix.png" style="height:60vh;margin-top:10vh;" />
+                </section>
+                <section>
+                    <h3>Creating a Hotfix</h3>
+                    <pre><code>$ git checkout -b hotfix-1.2.1 master
 Switched to a new branch "hotfix-1.2.1"
 
 $ ./bump-version.sh 1.2.1
@@ -153,16 +155,16 @@ Files modified successfully, version bumped to 1.2.1.
 $ git commit -a -m "Bumped version number to 1.2.1"
 [hotfix-1.2.1 41e61bb] Bumped version number to 1.2.1
 1 files changed, 1 insertions(+), 1 deletions(-)</code></pre>
-					</section>
-					<section>
-						<h3>Fix the bug</h3>
-						<pre><code>$ git commit -m "Fixed severe production problem"
+                </section>
+                <section>
+                    <h3>Fix the bug</h3>
+                    <pre><code>$ git commit -m "Fixed severe production problem"
 [hotfix-1.2.1 abbe5d6] Fixed severe production problem
 5 files changed, 32 insertions(+), 17 deletions(-)</code></pre>
-					</section>
-					<section>
-						<h3>Finishing a Hotfix</h3>
-						<pre><code>$ git checkout master
+                </section>
+                <section>
+                    <h3>Finishing a Hotfix</h3>
+                    <pre><code>$ git checkout master
 Switched to branch 'master'
 
 $ git merge hotfix-1.2.1 --no-ff
@@ -180,45 +182,54 @@ Merge made by recursive.
 
 $ git branch -d hotfix-1.2.1
 Deleted branch hotfix-1.2.1 (was abbe5d6).</code></pre>
-					</section>
-					<section>
-						<h3>What if there is an existing Release?</h3>
-						<p>When a release branch currently exists, the hotfix changes need to be merged into that release branch, instead of develop</p>
-					</section>
-				</section>
-				<section data-transition="zoom">
-					<h1>Any Questions?</h1>
-				</section>
-				<section>
-					<h2>References</h2>
-					<dl>
-						<dt><a href="http://nvie.com/posts/a-successful-git-branching-model/">GitFlow</a></dt>
-						<dd>Vincent Driessen's original post on the subject.</dd>
-						<dt><a href="https://github.com/nvie/gitflow">GitFlow Command Line Tools</a></dt>
-						<dd>Command line tools that simplify some of the tasks outlined in this presentation.</dd>
-						<dt><a href="http://learngitbranching.js.org/">Learn Git Branching</a></dt>
-						<dd>You can practice here.</dd>
-					</dl>
-				</section>
-			</div>
-		</div>
+                </section>
+                <section>
+                    <h3>What if there is an existing Release?</h3>
+                    <p>When a release branch currently exists, the hotfix changes need to be merged into that release branch, instead of develop</p>
+                </section>
+            </section>
+            <section data-transition="zoom">
+                <h1>Any Questions?</h1>
+            </section>
+            <section>
+                <h2>References</h2>
+                <dl>
+                    <dt><a href="http://nvie.com/posts/a-successful-git-branching-model/">GitFlow</a></dt>
+                    <dd>Vincent Driessen's original post on the subject.</dd>
+                    <dt><a href="https://github.com/nvie/gitflow">GitFlow Command Line Tools</a></dt>
+                    <dd>Command line tools that simplify some of the tasks outlined in this presentation.</dd>
+                    <dt><a href="http://learngitbranching.js.org/">Learn Git Branching</a></dt>
+                    <dd>You can practice here.</dd>
+                </dl>
+            </section>
+        </div>
+    </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+    <script>
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            history: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+            // More info https://github.com/hakimel/reveal.js#dependencies
+            dependencies: [{
+                src: 'plugin/markdown/marked.js'
+            }, {
+                src: 'plugin/markdown/markdown.js'
+            }, {
+                src: 'plugin/notes/notes.js',
+                async: true
+            }, {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }]
+        });
+    </script>
+</body>
+
 </html>
